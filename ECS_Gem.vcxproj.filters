@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\ECS">
+      <UniqueIdentifier>{a36165e3-3966-4c44-8208-f65cdc63f2a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ECS\Entity">
+      <UniqueIdentifier>{c2fef7d7-bfb9-4156-8abb-15771e18665d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ECS\System">
+      <UniqueIdentifier>{110d6907-666a-4dba-97c1-a604aa128b9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ECS\Component">
+      <UniqueIdentifier>{b89eb60f-ec5b-426f-8379-b87cfc674b13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ECS">
+      <UniqueIdentifier>{b1f0301e-493c-4e1a-a302-2cb024ad1704}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ECS\Component">
+      <UniqueIdentifier>{868cbfb1-5b49-419c-9ebf-ecaa77cb1f81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ECS\Component\ComponentImps">
+      <UniqueIdentifier>{f955d200-659a-4858-a467-1523a467e9e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ECS\System">
+      <UniqueIdentifier>{5cd8a7a4-56f6-4736-bea8-b17999843c47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ECS\System\SystemImps">
+      <UniqueIdentifier>{384b2673-629d-4661-8e0c-9845b10d1f73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\FSM">
+      <UniqueIdentifier>{d989717c-abc8-40cf-ae75-333366f109be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets">
+      <UniqueIdentifier>{3a3473dd-fb88-44e2-a03f-a09278084e09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets\textures">
+      <UniqueIdentifier>{bfc8eca1-184f-49c8-930c-2d3b54f6613b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets\textures\spritesheets">
+      <UniqueIdentifier>{7edeada5-e6b7-4a66-98cf-61bc54844304}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\Component.cpp">
+      <Filter>Source Files\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\ECSManager.cpp">
+      <Filter>Source Files\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\Entity.cpp">
+      <Filter>Source Files\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\System.cpp">
+      <Filter>Source Files\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\Component\Components.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\Component\Animation.cpp">
+      <Filter>Source Files\ECS\Component</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\Component\ComponentImps\AnimationComponent.cpp">
+      <Filter>Source Files\ECS\Component\ComponentImps</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\System\SystemImps\AnimationSystem.cpp">
+      <Filter>Source Files\ECS\System\SystemImps</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\System\SystemImps\PhysicsSystem.cpp">
+      <Filter>Source Files\ECS\System\SystemImps</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\System\SystemImps\RenderingSystem.cpp">
+      <Filter>Source Files\ECS\System\SystemImps</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ECS\Component.h">
+      <Filter>Header Files\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="ECS\ECSManager.h">
+      <Filter>Header Files\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="ECS\Entity.h">
+      <Filter>Header Files\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="ECS\System.h">
+      <Filter>Header Files\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="ECS\Component\Components.h">
+      <Filter>Header Files\ECS\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="ECS\System\Systems.h">
+      <Filter>Header Files\ECS\System</Filter>
+    </ClInclude>
+    <ClInclude Include="ECS\Entity\Entities.h">
+      <Filter>Header Files\ECS\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="ECS\Component\ComponentEnums.h">
+      <Filter>Header Files\ECS\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="ECS\Component\Animation.h">
+      <Filter>Header Files\ECS\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="FSM\DuckFold.h">
+      <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="FSM\Events.h">
+      <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="FSM\FSM.h">
+      <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="FSM\IgnoreUnknownEvent.h">
+      <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="FSM\PlayerAnimFSM.h">
+      <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="FSM\PlayerAnimStates.h">
+      <Filter>Header Files\FSM</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\textures\spritesheets\PlayerAttack.png">
+      <Filter>assets\textures\spritesheets</Filter>
+    </Image>
+    <Image Include="assets\textures\spritesheets\PlayerIdle.png">
+      <Filter>assets\textures\spritesheets</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
