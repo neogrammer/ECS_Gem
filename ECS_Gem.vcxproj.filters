@@ -142,5 +142,8 @@
     <Image Include="assets\textures\spritesheets\PlayerIdle.png">
       <Filter>assets\textures\spritesheets</Filter>
     </Image>
+    <Image Include="assets\textures\spritesheets\PlayerSheet.png">
+      <Filter>assets\textures\spritesheets</Filter>
+    </Image>
   </ItemGroup>
 </Project>

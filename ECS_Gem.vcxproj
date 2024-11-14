@@ -107,6 +107,7 @@
   <ItemGroup>
     <Image Include="assets\textures\spritesheets\PlayerAttack.png" />
     <Image Include="assets\textures\spritesheets\PlayerIdle.png" />
+    <Image Include="assets\textures\spritesheets\PlayerSheet.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

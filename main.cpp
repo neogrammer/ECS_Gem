@@ -31,7 +31,7 @@ int main()
     ent->get<PositionComponent>()->y = 400.f;
 
     sf::Texture playerTex;
-    playerTex.loadFromFile("assets/textures/spritesheets/PlayerIdle.png");
+    playerTex.loadFromFile("assets/textures/spritesheets/PlayerSheet.png");
     ent->addComponent<RenderableComponent>();
     ent->get<RenderableComponent>()->tex = &playerTex;
 
