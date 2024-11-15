@@ -1,9 +1,15 @@
-#include <ECS\Component\Components.h>
+#include <ECS/Component/Components.h>
+#include <ECS/LUT.h>
 
+Animation* AnimationComponent::backup = nullptr;
 
 Animation& AnimationComponent::get()
 {
     return animAtlas[currAnimID];
+}
+Animation& AnimationComponent::get(AnimID id_)
+{
+        return animAtlas[id_];
 }
 sf::IntRect& AnimationComponent::getFrame(int index)
 {
@@ -34,4 +40,10 @@ void AnimationComponent::addAnimation(AnimID id_, int numFrames_, int x_, int y_
         }
 
     }
+    animAtlas[id_].setLooping(true);
+
+    lut::animIDLUT.emplace(&animAtlas[id_], id_);
+
+    if (animAtlas.find(AnimID::Idle) != animAtlas.end() && backup == nullptr)
+         backup = &animAtlas[AnimID::Idle];
 }

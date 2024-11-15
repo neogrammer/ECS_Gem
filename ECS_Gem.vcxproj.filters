@@ -52,6 +52,21 @@
     <Filter Include="assets\textures\spritesheets">
       <UniqueIdentifier>{7edeada5-e6b7-4a66-98cf-61bc54844304}</UniqueIdentifier>
     </Filter>
+    <Filter Include="assets\fonts">
+      <UniqueIdentifier>{b9eb0c1c-e9c2-4dbc-9bda-21e21af6b154}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Action">
+      <UniqueIdentifier>{0d328f76-3b0e-4115-861c-cab0efb2c8b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Action\tpl">
+      <UniqueIdentifier>{5f6473b1-f01e-4407-9752-376f3826ba9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Action">
+      <UniqueIdentifier>{e660bcb9-1994-4757-8082-04ca4cace68a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FSM">
+      <UniqueIdentifier>{8de7de7f-5207-4ff3-9d09-95f1d6324bf0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -86,6 +101,27 @@
     </ClCompile>
     <ClCompile Include="ECS\System\SystemImps\RenderingSystem.cpp">
       <Filter>Source Files\ECS\System\SystemImps</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\LUT.cpp">
+      <Filter>Source Files\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="Action\Action.cpp">
+      <Filter>Source Files\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\Component\ComponentImps\PlayerControllerComponent.cpp">
+      <Filter>Source Files\ECS\Component\ComponentImps</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\System\SystemImps\ControlSystem.cpp">
+      <Filter>Source Files\ECS\System\SystemImps</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\System\SystemImps\AnimStateSystem.cpp">
+      <Filter>Source Files\ECS\System\SystemImps</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\Component\ComponentImps\AnimStateMachineComponent.cpp">
+      <Filter>Source Files\ECS\Component\ComponentImps</Filter>
+    </ClCompile>
+    <ClCompile Include="FSM\FSMEvent.cpp">
+      <Filter>Source Files\FSM</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -134,6 +170,21 @@
     <ClInclude Include="FSM\PlayerAnimStates.h">
       <Filter>Header Files\FSM</Filter>
     </ClInclude>
+    <ClInclude Include="ECS\LUT.h">
+      <Filter>Header Files\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Action\Action.h">
+      <Filter>Header Files\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="Action\ActionMap.h">
+      <Filter>Header Files\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="Action\ActionTarget.h">
+      <Filter>Header Files\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="FSM\FSMEvent.h">
+      <Filter>Header Files\FSM</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\textures\spritesheets\PlayerAttack.png">
@@ -145,5 +196,18 @@
     <Image Include="assets\textures\spritesheets\PlayerSheet.png">
       <Filter>assets\textures\spritesheets</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="assets\fonts\font1.ttf">
+      <Filter>assets\fonts</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Action\tpl\ActionMap.tpl">
+      <Filter>Header Files\Action\tpl</Filter>
+    </None>
+    <None Include="Action\tpl\ActionTarget.tpl">
+      <Filter>Header Files\Action\tpl</Filter>
+    </None>
   </ItemGroup>
 </Project>

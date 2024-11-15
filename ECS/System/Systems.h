@@ -15,3 +15,13 @@ class RenderingSystem : public System {
 public:
     void Render(sf::RenderWindow& wnd_, std::vector<std::shared_ptr<Entity>>& entities_, float deltaTime) override;
 };
+class ControlSystem : public System {
+public:
+    void Update(float deltaTime, std::vector<std::shared_ptr<Entity>>& entities_, sf::RenderWindow& wnd_) override;
+};
+class AnimStateSystem : public System {
+public:
+
+
+    void Update(float deltaTime, std::vector<std::shared_ptr<Entity>>& entities_, sf::RenderWindow& wnd_) override;
+};

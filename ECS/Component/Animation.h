@@ -5,7 +5,7 @@
 class Animation
 {
 public:
-	int currentFrame{ 0 };
+	int    currentFrame{ 0 };
 	float frameTimeElapsed{ 0.f };
 	float frameDelay{ 0.f };
 	bool playing{ true };
@@ -14,8 +14,10 @@ public:
 	float startDelay{ 0.f };
 	float startWaitTimeElapsed{ 0.f };
 	bool looping{ true };
+	bool done{ false };
+
 	std::vector<sf::IntRect> frames{};
-	Animation() = default;
+	Animation();
 	~Animation() = default;
 	inline sf::IntRect& getCurrentFrame() noexcept 	{ 	return frames[currentFrame];	}
 	inline sf::IntRect& getFrame(int index)

@@ -28,5 +28,5 @@ public:
 private:
     int id{};
     static int numEntities;
-    EntTuple components{nullptr,nullptr,nullptr, nullptr};
+    EntTuple components{nullptr,nullptr,nullptr, nullptr, nullptr, nullptr};
 };

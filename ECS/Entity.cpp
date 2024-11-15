@@ -1,7 +1,7 @@
 #include <ECS/Entity.h>
 
 Entity::Entity()
-    : components{ nullptr, nullptr, nullptr, nullptr }
+    : components{ nullptr, nullptr, nullptr, nullptr, nullptr, nullptr}
 {
     id = numEntities++;
 }

@@ -11,7 +11,7 @@
 #include <ECS/ECSManager.h>
 
 
-
+#define FPS60 1.f/60.f
 
 
 
@@ -37,21 +37,54 @@ int main()
 
     ent->addComponent<AnimationComponent>();
     ent->get<AnimationComponent>()->addAnimation(AnimID::Idle, 16, 0, 0, 299, 240);
-    ent->get<AnimationComponent>()->get().frameDelay = 2.f ;
-    ent->get<AnimationComponent>()->get().setWaitToStart(true);
-    ent->get<AnimationComponent>()->get().currentlyWaitingToStart = true;
-    ent->get<AnimationComponent>()->get().startDelay = 30.f;
+    ent->get<AnimationComponent>()->get(AnimID::Idle).frameDelay = 0.14f;
+    ent->get<AnimationComponent>()->get(AnimID::Idle).setWaitToStart(true);
+    ent->get<AnimationComponent>()->get(AnimID::Idle).currentlyWaitingToStart = true;
+    ent->get<AnimationComponent>()->get(AnimID::Idle).setLooping(true);
+    ent->get<AnimationComponent>()->get(AnimID::Idle).setStartDelay(2.f);
 
+    ent->get<AnimationComponent>()->addAnimation(AnimID::Attack, 18, 0, 240*8, 299, 240);
+    ent->get<AnimationComponent>()->get(AnimID::Attack).frameDelay = 0.f;
+    ent->get<AnimationComponent>()->get(AnimID::Attack).setLooping(false);
+    ent->get<AnimationComponent>()->get(AnimID::Attack).currentlyWaitingToStart = false;
+    ent->get<AnimationComponent>()->get(AnimID::Attack).waitsToBegin = false;
+
+    ent->get<AnimationComponent>()->addAnimation(AnimID::Run, 16, 0, 480*8, 299, 240);
+    ent->get<AnimationComponent>()->get().frameDelay = 0.0f;
+
+    ent->get<AnimationComponent>()->currAnimID = AnimID::Idle;
+
+    ent->addComponent<PlayerControllerComponent>();
+    ent->addComponent<AnimStateMachineComponent>();
 
     RenderingSystem renderer{};
+    ControlSystem controller{};
     AnimationSystem animator{};
+    AnimStateSystem machine{};
     PhysicsSystem physics{};
     mgr.AddSystem(&renderer);
-    mgr.AddSystem(&animator);
+    mgr.AddSystem(&controller);
     mgr.AddSystem(&physics);
+    mgr.AddSystem(&machine);
+    mgr.AddSystem(&animator);
+
+
+
+    sf::Font font;
+    font.loadFromFile("assets/fonts/font1.ttf");
+    sf::Text fpsLabel;
+    fpsLabel.setFont(font);
+    fpsLabel.setString("  FPS");
+    fpsLabel.setFillColor(sf::Color::White);
+    fpsLabel.setOutlineThickness(2U);
+    fpsLabel.setOutlineColor(sf::Color::Black);
+    fpsLabel.setPosition({ 10.f,10.f });
 
     sf::Clock timer{};
     float dt{};
+    int count{};
+    float counter{};
+    sf::Clock fpsTimer{};
 	while (wnd.isOpen())
 	{
 		sf::Event e;
@@ -60,16 +93,33 @@ int main()
 			if (e.type == sf::Event::Closed)
 				wnd.close();
 		}
-        dt += timer.getElapsedTime().asSeconds();
-        while (dt >= 1.f / 60.f)
+        counter += timer.getElapsedTime().asSeconds();
+        dt = timer.restart().asSeconds();
+        if (counter >= 1.f)
         {
-            mgr.Update(1.f / 60.f);
-
-            wnd.clear();
-            mgr.Render(1.f / 60.f);
-            wnd.display();
-            dt -= 1.f / 60.f;
+            counter = 0.f;
+            std::string str = "";
+            str = std::to_string(count);    
+            str.append(" FPS");
+            fpsLabel.setString(str);
+            count = 0;
         }
+        else
+        {
+            if (counter >= 1.f / 60.f)
+            {
+                count++;
+            }
+        }
+      
+        
+        mgr.Update(dt);
+
+        wnd.clear();
+        mgr.Render(dt);
+        wnd.draw(fpsLabel);
+        wnd.display();
+        
 	}
 }
 

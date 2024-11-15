@@ -75,19 +75,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Action\Action.cpp" />
     <ClCompile Include="ECS\Component.cpp" />
     <ClCompile Include="ECS\Component\Animation.cpp" />
     <ClCompile Include="ECS\Component\ComponentImps\AnimationComponent.cpp" />
+    <ClCompile Include="ECS\Component\ComponentImps\AnimStateMachineComponent.cpp" />
+    <ClCompile Include="ECS\Component\ComponentImps\PlayerControllerComponent.cpp" />
     <ClCompile Include="ECS\Component\Components.cpp" />
     <ClCompile Include="ECS\ECSManager.cpp" />
     <ClCompile Include="ECS\Entity.cpp" />
+    <ClCompile Include="ECS\LUT.cpp" />
     <ClCompile Include="ECS\System.cpp" />
     <ClCompile Include="ECS\System\SystemImps\AnimationSystem.cpp" />
+    <ClCompile Include="ECS\System\SystemImps\AnimStateSystem.cpp" />
+    <ClCompile Include="ECS\System\SystemImps\ControlSystem.cpp" />
     <ClCompile Include="ECS\System\SystemImps\PhysicsSystem.cpp" />
     <ClCompile Include="ECS\System\SystemImps\RenderingSystem.cpp" />
+    <ClCompile Include="FSM\FSMEvent.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Action\Action.h" />
+    <ClInclude Include="Action\ActionMap.h" />
+    <ClInclude Include="Action\ActionTarget.h" />
     <ClInclude Include="ECS\Component.h" />
     <ClInclude Include="ECS\Component\Animation.h" />
     <ClInclude Include="ECS\Component\ComponentEnums.h" />
@@ -95,9 +105,11 @@
     <ClInclude Include="ECS\ECSManager.h" />
     <ClInclude Include="ECS\Entity.h" />
     <ClInclude Include="ECS\Entity\Entities.h" />
+    <ClInclude Include="ECS\LUT.h" />
     <ClInclude Include="ECS\System.h" />
     <ClInclude Include="ECS\System\Systems.h" />
     <ClInclude Include="FSM\DuckFold.h" />
+    <ClInclude Include="FSM\FSMEvent.h" />
     <ClInclude Include="FSM\Events.h" />
     <ClInclude Include="FSM\FSM.h" />
     <ClInclude Include="FSM\IgnoreUnknownEvent.h" />
@@ -108,6 +120,13 @@
     <Image Include="assets\textures\spritesheets\PlayerAttack.png" />
     <Image Include="assets\textures\spritesheets\PlayerIdle.png" />
     <Image Include="assets\textures\spritesheets\PlayerSheet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="assets\fonts\font1.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Action\tpl\ActionMap.tpl" />
+    <None Include="Action\tpl\ActionTarget.tpl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

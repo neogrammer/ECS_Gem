@@ -1,5 +1,20 @@
 #include <ECS/Component/Animation.h>
 
+Animation::Animation()
+	:  currentFrame{ 0 },
+	frameTimeElapsed{ 0.f },
+	frameDelay{ 0.f },
+	playing{ true },
+	waitsToBegin{ false },
+	currentlyWaitingToStart{ false },
+	startDelay{ 0.f },
+	startWaitTimeElapsed{ 0.f },
+	looping{ true },
+	done{ false }
+{
+
+}
+
 void Animation::push_back(sf::IntRect r_) { frames.push_back(r_); }
 void Animation::play() { playing = true; }
 void Animation::stop() { playing = false; currentFrame = 0; }
@@ -23,7 +38,7 @@ void Animation::Update(float dt) {
 	{
 		if (currentlyWaitingToStart)
 		{
-			startWaitTimeElapsed += 1.0f/60.f;
+			startWaitTimeElapsed += dt;
 
 			if (startWaitTimeElapsed >= startDelay)
 			{
@@ -36,11 +51,19 @@ void Animation::Update(float dt) {
 		else
 		{
 			// not waiting to begin the animation
-			frameTimeElapsed += 1.f/60.f;
+			frameTimeElapsed += dt;
 
 			if (frameTimeElapsed > frameDelay)
 			{
 				frameTimeElapsed = 0.f;
+
+				if (!looping)
+				{
+					if (isOnLastFrame())
+					{
+						done = true;
+					}
+				}
 
 				if (waitsToBegin && looping)
 				{
