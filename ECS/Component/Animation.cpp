@@ -1,5 +1,5 @@
 #include <ECS/Component/Animation.h>
-
+#include <ECS/Component/ComponentEnums.h>
 Animation::Animation()
 	:  currentFrame{ 0 },
 	frameTimeElapsed{ 0.f },
@@ -15,11 +15,27 @@ Animation::Animation()
 
 }
 
+Animation::Animation(std::string name_, Dir orient_)
+	:  currentFrame{ 0 },
+		frameTimeElapsed{ 0.f },
+		frameDelay{ 0.f },
+		playing{ true },
+		waitsToBegin{ false },
+		currentlyWaitingToStart{ false },
+		startDelay{ 0.f },
+		startWaitTimeElapsed{ 0.f },
+		looping{ true },
+		done{ false },
+		name{name_},
+		orientation{orient_}
+{
+}
+
 void Animation::push_back(sf::IntRect r_) { frames.push_back(r_); }
 void Animation::play() { playing = true; }
 void Animation::stop() { playing = false; currentFrame = 0; }
 void Animation::pause() { playing = false; }
-
+void Animation::setName(std::string name_) { name = name_; }
 bool Animation::isWaitingToStart() { return currentlyWaitingToStart; }
 void Animation::setWaitToStart(bool cond_) { waitsToBegin = cond_; }
 void Animation::setStartDelay(float amt_) { startDelay = amt_; }

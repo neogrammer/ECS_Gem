@@ -4,17 +4,30 @@ void AnimationSystem::Update(float deltaTime, std::vector<std::shared_ptr<Entity
 
     auto filteredEntities = filterEntities<AnimationComponent>(entities_);
 
-
     for (auto& e : filteredEntities)
     {
-        auto& anim = e->get<AnimationComponent>();
+        auto& comp = e->get<AnimationComponent>();
+        auto& anim = comp->animations[comp->currAnimID].animset[(int)comp->currDir];
 
-        if (anim->animAtlas[anim->currAnimID].done)
+        if (anim.done)
         {
-            anim->animAtlas[anim->currAnimID].done = false;
-            anim->currAnimID = lut::animIDLUT[anim->backup];
+            anim.done = false;
+           comp->currAnimID = lut::animIDLUT[comp->backup];
         }
-        anim->animAtlas[anim->currAnimID].Update(deltaTime);
+       anim.Update(deltaTime);
 
     }
+
+    //for (auto& e : filteredEntities)
+    //{
+    //    auto& anim = e->get<AnimationComponent>();
+
+    //    if (anim->animAtlas[anim->currAnimID].done)
+    //    {
+    //        anim->animAtlas[anim->currAnimID].done = false;
+    //        anim->currAnimID = lut::animIDLUT[anim->backup];
+    //    }
+    //    anim->animAtlas[anim->currAnimID].Update(deltaTime);
+
+    //}
 }

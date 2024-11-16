@@ -14,7 +14,7 @@ void  RenderingSystem::Render(sf::RenderWindow& wnd_, std::vector<std::shared_pt
         if (e->hasComponent<AnimationComponent>())
         {
             auto& anim = e->get<AnimationComponent>();
-            tmp.setTextureRect(anim->getFrame());
+            tmp.setTextureRect(anim->getSetFrame());
         }
         wnd_.draw(tmp);
     }

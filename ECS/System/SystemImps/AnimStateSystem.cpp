@@ -42,7 +42,7 @@ void AnimStateSystem::Update(float deltaTime, std::vector<std::shared_ptr<Entity
         auto nameAfter = stateComp->fsm.getStateName();
         if (nameAfter.compare(nameBefore) != 0)
         {
-            animComp->animAtlas[animComp->currAnimID].stop();
+            //animComp->animAtlas[animComp->currAnimID].stop();
             // animation changed
             if (nameAfter == "IdleState")
                 animComp->currAnimID = AnimID::Idle;
@@ -50,7 +50,7 @@ void AnimStateSystem::Update(float deltaTime, std::vector<std::shared_ptr<Entity
                 animComp->currAnimID = AnimID::Attack;
             else if (nameAfter == "RunningState")
                 animComp->currAnimID = AnimID::Run;
-            animComp->animAtlas[animComp->currAnimID].play();
+            //animComp->animAtlas[animComp->currAnimID].play();
         }
     }
 

@@ -185,6 +185,9 @@
     <ClInclude Include="FSM\FSMEvent.h">
       <Filter>Header Files\FSM</Filter>
     </ClInclude>
+    <ClInclude Include="ECS\Component\AnimSet.h">
+      <Filter>Header Files\ECS\Component</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\textures\spritesheets\PlayerAttack.png">

@@ -24,3 +24,13 @@ enum class ButtonID : int
 {
 	Up, Left, Down, Right, X
 };
+
+enum class Dir : int
+{
+	S,SE,E,NE,N,NW,W,SW
+};
+
+enum class AnimSetType : int
+{
+	Single, Duo, Quad, Octo
+};

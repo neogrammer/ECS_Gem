@@ -1,7 +1,9 @@
 #pragma once
 #include <vector>
 #include <stdexcept>
+#include  <string>
 #include <SFML/Graphics/Rect.hpp>
+#include <ECS/Component/ComponentEnums.h>
 class Animation
 {
 public:
@@ -15,9 +17,12 @@ public:
 	float startWaitTimeElapsed{ 0.f };
 	bool looping{ true };
 	bool done{ false };
-
+	std::string name{ "Default" };
+	Dir orientation{ Dir::S };
 	std::vector<sf::IntRect> frames{};
 	Animation();
+	Animation(std::string name_, Dir orient_);
+
 	~Animation() = default;
 	inline sf::IntRect& getCurrentFrame() noexcept 	{ 	return frames[currentFrame];	}
 	inline sf::IntRect& getFrame(int index)
@@ -42,4 +47,9 @@ public:
 	int numFrames(); 
 	void addFrame(sf::IntRect fr_); 
 	void Update(float dt);
+	void setName(std::string name_);
+	inline std::string& getName() { return name; }
+	inline Dir getOrientation() { return orientation; }
+	inline void setOrientation(Dir d_) { orientation = d_; }
+
 };

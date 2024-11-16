@@ -36,23 +36,65 @@ int main()
     ent->get<RenderableComponent>()->tex = &playerTex;
 
     ent->addComponent<AnimationComponent>();
+
     ent->get<AnimationComponent>()->addAnimation(AnimID::Idle, 16, 0, 0, 299, 240);
-    ent->get<AnimationComponent>()->get(AnimID::Idle).frameDelay = 0.14f;
+    ent->get<AnimationComponent>()->get(AnimID::Idle).frameDelay = 0.11f;
     ent->get<AnimationComponent>()->get(AnimID::Idle).setWaitToStart(true);
     ent->get<AnimationComponent>()->get(AnimID::Idle).currentlyWaitingToStart = true;
     ent->get<AnimationComponent>()->get(AnimID::Idle).setLooping(true);
-    ent->get<AnimationComponent>()->get(AnimID::Idle).setStartDelay(2.f);
+    ent->get<AnimationComponent>()->get(AnimID::Idle).setStartDelay(3.f);
 
     ent->get<AnimationComponent>()->addAnimation(AnimID::Attack, 18, 0, 240*8, 299, 240);
-    ent->get<AnimationComponent>()->get(AnimID::Attack).frameDelay = 0.f;
-    ent->get<AnimationComponent>()->get(AnimID::Attack).setLooping(false);
+    ent->get<AnimationComponent>()->get(AnimID::Attack).frameDelay = 0.04f;
+    ent->get<AnimationComponent>()->get(AnimID::Attack).setLooping(true);
     ent->get<AnimationComponent>()->get(AnimID::Attack).currentlyWaitingToStart = false;
     ent->get<AnimationComponent>()->get(AnimID::Attack).waitsToBegin = false;
+    ent->get<AnimationComponent>()->get(AnimID::Attack).setStartDelay(0.f);
+
 
     ent->get<AnimationComponent>()->addAnimation(AnimID::Run, 16, 0, 480*8, 299, 240);
-    ent->get<AnimationComponent>()->get().frameDelay = 0.0f;
+    ent->get<AnimationComponent>()->get(AnimID::Run).frameDelay = 0.04f;
+    ent->get<AnimationComponent>()->get(AnimID::Run).setLooping(true);
+    ent->get<AnimationComponent>()->get(AnimID::Run).currentlyWaitingToStart = false;
+    ent->get<AnimationComponent>()->get(AnimID::Run).waitsToBegin = false;
+    ent->get<AnimationComponent>()->get(AnimID::Run).setStartDelay(0.f);
+
+    std::array<int, 8> arr = { 16, };
+ std::array<float, 8> arrFrameDelay1 = { 0.11f, };
+    std::array<int, 8> arr2 = { 18, };
+    std::array<float, 8> arrFrameDelay2 = { 0.04f, };
+ std::array<float, 8> arrFrameDelay3 = { 0.04f, };
+
+    for (int i = 0; i < 8; i++)
+    {
+        arr[i] = 16;
+        arrFrameDelay1[i] = 0.11f;
+        arr2[i]=18;
+        arrFrameDelay2[i]=0.04f;
+        arrFrameDelay3[i]=0.04f;
+    }
+
+    ent->get<AnimationComponent>()->addAnimationSet8(AnimID::Idle, arr, 0, 0, 299, 240);
+    ent->get<AnimationComponent>()->setAnimNames(AnimID::Idle, "IdleState");
+    ent->get<AnimationComponent>()->setAnimFrameDelays(AnimID::Idle, arrFrameDelay1);
+    ent->get<AnimationComponent>()->setAnimStartWaits(AnimID::Idle, true, 3.f);
+
+  
+
+    ent->get<AnimationComponent>()->addAnimationSet8(AnimID::Attack, arr2, 0, 240 * 8, 299, 240);
+    ent->get<AnimationComponent>()->setAnimNames(AnimID::Attack, "ShootingState");
+    ent->get<AnimationComponent>()->setAnimFrameDelays(AnimID::Attack, arrFrameDelay2);
+    ent->get<AnimationComponent>()->setAnimStartWaits(AnimID::Attack);
+   // ent->get<AnimationComponent>()->setAnimLooping(AnimID::Attack, false);
+
+    ent->get<AnimationComponent>()->addAnimationSet8(AnimID::Run, arr, 0, 480 * 8, 299, 240);
+    ent->get<AnimationComponent>()->setAnimNames(AnimID::Run, "RunningState");
+    ent->get<AnimationComponent>()->setAnimFrameDelays(AnimID::Run, arrFrameDelay3);
+    ent->get<AnimationComponent>()->setAnimStartWaits(AnimID::Run);
+
 
     ent->get<AnimationComponent>()->currAnimID = AnimID::Idle;
+    ent->get<AnimationComponent>()->currDir = Dir::S;
 
     ent->addComponent<PlayerControllerComponent>();
     ent->addComponent<AnimStateMachineComponent>();
@@ -65,8 +107,8 @@ int main()
     mgr.AddSystem(&renderer);
     mgr.AddSystem(&controller);
     mgr.AddSystem(&physics);
-    mgr.AddSystem(&machine);
     mgr.AddSystem(&animator);
+    mgr.AddSystem(&machine);
 
 
 

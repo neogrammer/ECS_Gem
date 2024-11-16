@@ -6,6 +6,8 @@
 #include <unordered_map>
 #include <ECS/Component/ComponentEnums.h>
 #include <ECS/Component/Animation.h>
+#include <ECS/Component/AnimSet.h>
+
 #include <Action/ActionTarget.h>
 #include <map>
 #include <FSM/PlayerAnimFSM.h>
@@ -32,14 +34,26 @@ class AnimationComponent : public Component
 {
 public:
     static Animation* backup;
-
+    Dir currDir{ Dir::S };
+    std::unordered_map<AnimID, AnimSet> animations;
     std::unordered_map<AnimID, Animation> animAtlas;
     int numAnims{ 0 };
-    AnimID currAnimID{AnimID::None};
+    int numAnimSets{ 0 };
+
+    AnimID currAnimID{ AnimID::None };
     Animation& get();
     Animation& get(AnimID id_);
+    Animation& getSetAnim();
+    Animation& getSetAnim(AnimID id_);
+    void setAnimNames(AnimID id_, std::string name_);
     sf::IntRect& getFrame(int index = -1);
+    sf::IntRect& getSetFrame(int index = -1);
+
     void addAnimation(AnimID id_, int numFrames_, int x_, int y_, int w_, int h_);
+    void addAnimationSet8(AnimID id_, std::array<int, 8> numFrames_, int x_, int y_, int w_, int h_);
+    void setAnimFrameDelays(AnimID id_, std::array<float, 8> delays_);
+    void setAnimStartWaits(AnimID id_, bool cond_ = false, float waitDelay_ = 0.f);
+    void setAnimLooping(AnimID id_, bool cond_);
 };
 
 class AnimStateMachineComponent : public Component
