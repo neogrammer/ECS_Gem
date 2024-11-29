@@ -67,6 +67,18 @@
     <Filter Include="Source Files\FSM">
       <UniqueIdentifier>{8de7de7f-5207-4ff3-9d09-95f1d6324bf0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="assets\data">
+      <UniqueIdentifier>{82e3892d-7d3d-4382-a24e-4162a928f800}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets\data\tilemap">
+      <UniqueIdentifier>{7f85c22e-8a62-4c0b-8c83-6c381db51104}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets\data\tileset">
+      <UniqueIdentifier>{81d69336-1354-4e82-9d49-40b9aa902668}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="assets\textures\tilesets">
+      <UniqueIdentifier>{e57a74e1-f23d-4a5a-8a5d-5169a51b8c8f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -122,6 +134,12 @@
     </ClCompile>
     <ClCompile Include="FSM\FSMEvent.cpp">
       <Filter>Source Files\FSM</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\Component\ComponentImps\VelocityComponent.cpp">
+      <Filter>Source Files\ECS\Component\ComponentImps</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\System\SystemImps\MapSystem.cpp">
+      <Filter>Source Files\ECS\System\SystemImps</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +217,12 @@
     <Image Include="assets\textures\spritesheets\PlayerSheet.png">
       <Filter>assets\textures\spritesheets</Filter>
     </Image>
+    <Image Include="assets\textures\tilesets\blocksTileSheet.png">
+      <Filter>assets\textures\tilesets</Filter>
+    </Image>
+    <Image Include="assets\textures\tilesets\blocksTileSheet128v2.png">
+      <Filter>assets\textures\tilesets</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\fonts\font1.ttf">
@@ -212,5 +236,13 @@
     <None Include="Action\tpl\ActionTarget.tpl">
       <Filter>Header Files\Action\tpl</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="assets\data\tileset\tileset1.txt">
+      <Filter>assets\data\tileset</Filter>
+    </Text>
+    <Text Include="assets\data\tilemap\tilemap1.txt">
+      <Filter>assets\data\tilemap</Filter>
+    </Text>
   </ItemGroup>
 </Project>

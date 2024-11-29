@@ -18,7 +18,9 @@
 
 int main()
 {
-    sf::RenderWindow wnd{ {1600U,900U,32U}, "Hello nurse", sf::Style::Close };
+    sf::ContextSettings settings;
+    settings.antialiasingLevel = 8;
+    sf::RenderWindow wnd{ {1600U,900U,32U}, "Hello nurse", sf::Style::Close, settings };
     ECSManager mgr{ wnd };
 
     auto ent = mgr.AddEntity();
@@ -100,10 +102,17 @@ int main()
     ent->addComponent<AnimStateMachineComponent>();
 
     RenderingSystem renderer{};
+    sf::View gameView;
+    gameView.setSize({ 1600.f,900.f });
+    renderer.setView(gameView);
+    wnd.setView(gameView);
     ControlSystem controller{};
     AnimationSystem animator{};
     AnimStateSystem machine{};
     PhysicsSystem physics{};
+    MapSystem tilemapSystem{};
+    tilemapSystem.setView(gameView);
+    tilemapSystem.setMap("assets/data/tilemap/tilemap1.txt");
     mgr.AddSystem(&renderer);
     mgr.AddSystem(&controller);
     mgr.AddSystem(&physics);
@@ -158,7 +167,12 @@ int main()
         mgr.Update(dt);
 
         wnd.clear();
+        std::vector<std::shared_ptr<Entity>> entities;
+        entities.clear();
+        entities.push_back(ent);
+        tilemapSystem.Render(wnd,entities,dt);
         mgr.Render(dt);
+        wnd.setView(*tilemapSystem.gameView);
         wnd.draw(fpsLabel);
         wnd.display();
         

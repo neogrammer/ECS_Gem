@@ -76,6 +76,7 @@ public:
     bool upPressed{ false };
     bool downPressed{ false };
     bool attackPressed{ false };
+    bool movingDiagonal{ false };
 
     static ActionMap<int> map;
     std::map<ButtonID, bool> pressedButtons =

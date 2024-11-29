@@ -81,6 +81,7 @@
     <ClCompile Include="ECS\Component\ComponentImps\AnimationComponent.cpp" />
     <ClCompile Include="ECS\Component\ComponentImps\AnimStateMachineComponent.cpp" />
     <ClCompile Include="ECS\Component\ComponentImps\PlayerControllerComponent.cpp" />
+    <ClCompile Include="ECS\Component\ComponentImps\VelocityComponent.cpp" />
     <ClCompile Include="ECS\Component\Components.cpp" />
     <ClCompile Include="ECS\ECSManager.cpp" />
     <ClCompile Include="ECS\Entity.cpp" />
@@ -89,6 +90,7 @@
     <ClCompile Include="ECS\System\SystemImps\AnimationSystem.cpp" />
     <ClCompile Include="ECS\System\SystemImps\AnimStateSystem.cpp" />
     <ClCompile Include="ECS\System\SystemImps\ControlSystem.cpp" />
+    <ClCompile Include="ECS\System\SystemImps\MapSystem.cpp" />
     <ClCompile Include="ECS\System\SystemImps\PhysicsSystem.cpp" />
     <ClCompile Include="ECS\System\SystemImps\RenderingSystem.cpp" />
     <ClCompile Include="FSM\FSMEvent.cpp" />
@@ -121,6 +123,8 @@
     <Image Include="assets\textures\spritesheets\PlayerAttack.png" />
     <Image Include="assets\textures\spritesheets\PlayerIdle.png" />
     <Image Include="assets\textures\spritesheets\PlayerSheet.png" />
+    <Image Include="assets\textures\tilesets\blocksTileSheet.png" />
+    <Image Include="assets\textures\tilesets\blocksTileSheet128v2.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\fonts\font1.ttf" />
@@ -128,6 +132,10 @@
   <ItemGroup>
     <None Include="Action\tpl\ActionMap.tpl" />
     <None Include="Action\tpl\ActionTarget.tpl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="assets\data\tilemap\tilemap1.txt" />
+    <Text Include="assets\data\tileset\tileset1.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

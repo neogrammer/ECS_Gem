@@ -4,6 +4,7 @@ void  RenderingSystem::Render(sf::RenderWindow& wnd_, std::vector<std::shared_pt
 {
     auto filteredEntities = filterEntities<PositionComponent, RenderableComponent>(entities_);
 
+    //gameView->setCenter({ entities_[0]->get<PositionComponent>()->x, entities_[0]->get<PositionComponent>()->y });
 
     for (auto& e : filteredEntities)
     {
@@ -18,4 +19,11 @@ void  RenderingSystem::Render(sf::RenderWindow& wnd_, std::vector<std::shared_pt
         }
         wnd_.draw(tmp);
     }
+
+  
+}
+
+void RenderingSystem::setView(sf::View& view_)
+{
+    gameView = &view_;
 }

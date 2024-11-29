@@ -1,5 +1,19 @@
 #include <ECS/System/Systems.h>
 
+bool PhysicsSystem::isMovingDiagonal(Entity& owner_)
+{
+    if (owner_.hasComponent<PlayerControllerComponent>())
+    {
+        auto& control = owner_.get<PlayerControllerComponent>();
+
+        if (control->movingDiagonal)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
 void PhysicsSystem::Update(float deltaTime, std::vector<std::shared_ptr<Entity>>& entities_, sf::RenderWindow& wnd_) {
     // Iterate over entities with Position and Velocity components
     // Update positions based on velocities and deltaTime
@@ -42,7 +56,12 @@ void PhysicsSystem::Update(float deltaTime, std::vector<std::shared_ptr<Entity>>
                 velocity->dx = 0.f;
 
             }
+            if (isMovingDiagonal(*entity))
+            {
+                velocity->dx *= .707f;
+                velocity->dy *= .707f;
 
+            }
 
             if (entity->hasComponent<AnimStateMachineComponent>())
             {
@@ -116,6 +135,8 @@ void PhysicsSystem::Update(float deltaTime, std::vector<std::shared_ptr<Entity>>
                 (control->pressedButtons[ButtonID::Down] && control->pressedButtons[ButtonID::Left]) ||
                 (control->pressedButtons[ButtonID::Down] && control->pressedButtons[ButtonID::Right]))
             {
+                control->movingDiagonal = true;
+                
                 if (control->pressedButtons[ButtonID::Up] && control->pressedButtons[ButtonID::Left])
                 {
                     animState->currDir = Dir::NW;
@@ -138,25 +159,98 @@ void PhysicsSystem::Update(float deltaTime, std::vector<std::shared_ptr<Entity>>
             {
                 if (control->pressedButtons[ButtonID::Up])
                 {
-                    animState->currDir = Dir::N;
+                    if (!control->movingDiagonal)
+                    {
+                        animState->currDir = Dir::N;
+                    }
+                    else
+                    {
+                        // wait to let go
+                        if (!currentlyLettingGo)
+                        {
+                            currentlyLettingGo = true;
+                            letgoElapsed = 0.f;
+                        }
+                                                   
+                    }
 
                 }
                 else if (control->pressedButtons[ButtonID::Down])
                 {
-                    animState->currDir = Dir::S;
-
+                    if (!control->movingDiagonal)
+                    {
+                        animState->currDir = Dir::S;
+                    }
+                    else
+                    {
+                        // wait to let go
+                        if (!currentlyLettingGo)
+                        {
+                            currentlyLettingGo = true;
+                            letgoElapsed = 0.f;
+                        }
+                    }
                 }
                 else if (control->pressedButtons[ButtonID::Left])
                 {
-                    animState->currDir = Dir::W;
-
+                    if (!control->movingDiagonal)
+                    {
+                        animState->currDir = Dir::W;
+                    }
+                    else
+                    {
+                        // wait to let go
+                        if (!currentlyLettingGo)
+                        {
+                            currentlyLettingGo = true;
+                            letgoElapsed = 0.f;
+                        }
+                    }
                 }
                 else if (control->pressedButtons[ButtonID::Right])
                 {
-                    animState->currDir = Dir::E;
+                    if (!control->movingDiagonal)
+                    {
+                        animState->currDir = Dir::E;
+                    }
+                    else
+                    {
+                        // wait to let go
+                        if (!currentlyLettingGo)
+                        {
+                            currentlyLettingGo = true;
+                            letgoElapsed = 0.f;
+                        }
+                    }
+                }
 
+                if (currentlyLettingGo)
+                {
+                    letgoElapsed += deltaTime;
+
+                    if (letgoElapsed > letgoDelay)
+                    {
+                        currentlyLettingGo = false;
+                        control->movingDiagonal = false;
+                    }
                 }
             }
+
+            bool found = false;
+            for (auto pressed : control->pressedButtons)
+            {
+                if (pressed.second)
+                {
+                    found = true;
+                }
+            }
+            if (!found)
+            {
+                control->movingDiagonal = false;
+                // or by time this can happen
+            }
+
+
 
         }
         
